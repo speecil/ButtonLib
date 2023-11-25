@@ -1,6 +1,6 @@
-# #{name}
+# ButtonLib
 
-Register controller inputs
+Register controller inputs for use within other mods
 
 Use `qpm-rust s build` to build
 Same goes for `qpm-rust s copy` and `qpm-rust s qmod`
