@@ -3,11 +3,11 @@
   "dependenciesDir": "extern",
   "info": {
     "name": "#{name}",
-    "id": "#{id}",
+    "id": "ButtonLib",
     "version": "0.1.0",
     "url": null,
     "additionalData": {
-      "overrideSoName": "lib#{id}.so",
+      "overrideSoName": "libButtonLib.so",
       "cmake": true
     }
   },

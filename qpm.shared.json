@@ -4,11 +4,11 @@
     "dependenciesDir": "extern",
     "info": {
       "name": "#{name}",
-      "id": "#{id}",
+      "id": "ButtonLib",
       "version": "0.1.0",
       "url": null,
       "additionalData": {
-        "overrideSoName": "lib#{id}.so",
+        "overrideSoName": "libButtonLib.so",
         "cmake": true
       }
     },
@@ -40,11 +40,17 @@
     ],
     "workspace": {
       "scripts": {
+        "build": [
+          "pwsh ./scripts/build.ps1"
+        ],
+        "tomb": [
+          "pwsh ./scripts/pull-tombstone.ps1"
+        ],
         "restart": [
           "pwsh ./scripts/restart-game.ps1"
         ],
-        "logcat": [
-          "pwsh ./scripts/start-logging.ps1"
+        "copy": [
+          "pwsh ./scripts/copy.ps1"
         ],
         "qmod": [
           "pwsh ./scripts/build.ps1",
@@ -53,14 +59,8 @@
         "stack": [
           "pwsh ./scripts/ndk-stack.ps1"
         ],
-        "build": [
-          "pwsh ./scripts/build.ps1"
-        ],
-        "tomb": [
-          "pwsh ./scripts/pull-tombstone.ps1"
-        ],
-        "copy": [
-          "pwsh ./scripts/copy.ps1"
+        "logcat": [
+          "pwsh ./scripts/start-logging.ps1"
         ]
       }
     }
