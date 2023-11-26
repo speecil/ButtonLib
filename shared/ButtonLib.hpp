@@ -1,27 +1,44 @@
 #pragma once
 
+#include "ButtonLib.hpp"
 #include <functional>
 #include <unordered_map>
 #include <vector>
 #include <string>
 
+enum ButtonList
+{
+    A,
+    B,
+    X,
+    Y,
+    LeftTrigger,
+    RightTrigger,
+    LeftGrip,
+    RightGrip,
+    LeftThumbstick,
+    RightThumbstick,
+};
+
 struct ButtonCallback {
     std::string owningMod;
     std::function<void()> callback;
-    std::vector<std::string> requiredButtons;
+    std::vector<ButtonList> requiredButtons;
     float requiredPercentage;
     bool allowOtherMods;
 };
 
+
+
 class ButtonLib {
 public:
-    static void RegisterButtonCombination(const std::string& requestingMod, const std::function<void()>& callback, const std::vector<std::string>& requiredButtons, float requiredPercentage, bool allowOtherMods);
+    static bool RegisterButtonCombination(const std::string& requestingMod, const std::function<void()>& callback, const std::vector<ButtonList>& requiredButtons, float requiredPercentage, bool allowOtherMods);
 
-    static void DeregisterButtonCombination(const std::string& requestingMod, const std::vector<std::string>& requiredButtons);
+    static bool DeregisterButtonCombination(const std::string& requestingMod, const std::vector<ButtonList>& requiredButtons);
     
-    static void HandleButtonPress(const std::vector<std::string>& buttonNames);
+    static void HandleButtonPress(const std::vector<ButtonList>& buttonNames);
 
-    static bool IsButtonOwned(const std::string& buttonName, const std::string& requestingMod);
+    static bool IsButtonOwned(const int& buttonName, const std::string& requestingMod);
 
     static void ClearButtonState();
 
@@ -30,5 +47,5 @@ public:
 private:
     static std::vector<ButtonCallback> buttonCombinationCallbacks;
 
-    static std::unordered_map<std::string, bool> buttonState;
+    static std::unordered_map<ButtonList, bool> buttonState;
 };
