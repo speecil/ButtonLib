@@ -15,7 +15,7 @@ void ButtonLib::RegisterButtonCombination(const std::string& requestingMod, cons
             // is da button owned
             for (const auto& requiredButton : requiredButtons) {
                 if (IsButtonOwned(requiredButton, requestingMod)) {
-                    // exit
+                    // exit (We should probably callback with a message of success or not)
                     return;
                 }
             }
@@ -33,6 +33,8 @@ void ButtonLib::DeregisterButtonCombination(const std::string& requestingMod, co
 
     // remove them
     buttonCombinationCallbacks.erase(it, buttonCombinationCallbacks.end());
+
+    // should also return a success status somewhere
 }
 
 
