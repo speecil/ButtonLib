@@ -16,7 +16,7 @@ bool ButtonLib::RegisterButtonCombination(const std::string& requestingMod, cons
             // is da button owned
             for (const auto& requiredButton : requiredButtons) {
                 if (IsButtonOwned(requiredButton, requestingMod)) {
-                    // exit (We should probably callback with a message of success or not)
+                    // exit
                     return false;
                 }
             }
