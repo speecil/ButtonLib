@@ -28,8 +28,6 @@ struct ButtonCallback {
     bool allowOtherMods;
 };
 
-
-
 class ButtonLib {
 public:
     static bool RegisterButtonCombination(const std::string& requestingMod, const std::function<void()>& callback, const std::vector<ButtonList>& requiredButtons, float requiredPercentage, bool allowOtherMods);

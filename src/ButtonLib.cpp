@@ -5,9 +5,9 @@
 #include "GlobalNamespace/OVRInput.hpp"
 #include <exception>
 #include <vector>
+
 std::vector<ButtonCallback> ButtonLib::buttonCombinationCallbacks;
 std::unordered_map<ButtonList, bool> ButtonLib::buttonState;
-
 
 // register, function void ptr, vector of required buttons by name, percent pressed to trigger action, and if you want to take sole ownership of button
 bool ButtonLib::RegisterButtonCombination(const std::string& requestingMod, const std::function<void()>& callback, const std::vector<ButtonList>& requiredButtons, float requiredPercentage, bool allowOtherMods) {
@@ -41,10 +41,6 @@ bool ButtonLib::DeregisterButtonCombination(const std::string& requestingMod, co
     }
 }
 
-
-
-
-
 bool ButtonLib::IsButtonOwned(const int& buttonName, const std::string& requestingMod) {
     for (const auto& callback : buttonCombinationCallbacks) {
         if (!callback.allowOtherMods && callback.owningMod != requestingMod) {
@@ -56,12 +52,10 @@ bool ButtonLib::IsButtonOwned(const int& buttonName, const std::string& requesti
     return false;
 }
 
-
 // clear the button states
 void ButtonLib::ClearButtonState() {
     buttonState.clear();
 }
-
 
 // handle when a button is pressed
 void ButtonLib::HandleButtonPress(const std::vector<ButtonList>& buttonNames) {
@@ -86,7 +80,6 @@ void ButtonLib::HandleButtonPress(const std::vector<ButtonList>& buttonNames) {
         }
     }
 }
-
 
 MAKE_HOOK_MATCH(ButtonHook, &GlobalNamespace::HMMainThreadDispatcher::Update, void, GlobalNamespace::HMMainThreadDispatcher* self) {
 
@@ -139,7 +132,6 @@ MAKE_HOOK_MATCH(ButtonHook, &GlobalNamespace::HMMainThreadDispatcher::Update, vo
 
     ButtonHook(self);
 }
-
 
 void ButtonLib::InstallHooks(){
 
