@@ -65,3 +65,4 @@ extern.cmake
 
 # QMOD Schema
 mod.json.schema
+src/ButtonLib.cpp

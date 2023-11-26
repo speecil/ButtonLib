@@ -135,5 +135,9 @@ MAKE_HOOK_MATCH(ButtonHook, &GlobalNamespace::HMMainThreadDispatcher::Update, vo
 
 
 void ButtonLib::InstallHooks(){
+
+    static bool isInitialised = false;
+
+    if(isInitialised) return;
     INSTALL_HOOK(getLogger(), ButtonHook);
 }
